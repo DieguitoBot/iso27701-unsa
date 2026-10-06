@@ -1,36 +1,38 @@
-# Privacidad · Aula UNSA
+# Privacidad · Guía de estudio y simulación oral UNSA
 
-Sitio educativo en español para sustentar ISO/IEC 27701:2025 en la Universidad Nacional de San Agustín de Arequipa. Reformulado a partir de `contenido.txt` el 6 de octubre de 2026: 31 controles de A.1, 18 de A.2 y 29 de A.3.
+La aplicación está completa en **`index.html`**: datos, estilos y JavaScript. Descarga ese único archivo y ábrelo directamente en un navegador. No requiere Node.js, instalación ni servidor.
 
-Cada una de las 78 fichas incluye objetivo, interpretación, quién implementa y cómo, quién audita y cómo, criterio de comprobación y cinco niveles específicos: muy bajo (crítico), bajo, medio, alto y muy alto. Son 390 criterios de rúbrica; no se asigna una calificación real a la UNSA.
+Se usa Tailwind CSS mediante su CDN e Inter mediante Google Fonts. El archivo incluye estilos de respaldo y fuentes del sistema para seguir siendo utilizable sin conexión. Los archivos `app.js`, `data.js` y `styles.css` pertenecen a la versión anterior: el HTML actual no los carga.
 
-## Abrir
-Abre `index.html` en un navegador moderno. Para servirlo localmente, ejecuta `python3 -m http.server 8080` desde esta carpeta.
+## Contenido
 
-## GitHub Pages
-Publica el contenido de esta carpeta en la raíz de un repositorio. En Settings → Pages, elige Deploy from a branch, rama main y carpeta /(root). Los recursos usan rutas relativas, compatibles con un sitio de proyecto. No se necesitan dependencias ni compilación.
+- 78 controles completos: A.1 (31), A.2 (18), A.3 (29).
+- Objetivo, interpretación, quién implementa y cómo, quién audita y cómo, evidencia y 390 criterios de rúbrica.
+- Texto original completo de cada control de `contenido.txt` en un desplegable, incluida la consulta SQL. Se conserva sin recortar; la ficha principal mantiene las correcciones educativas de la revisión anterior.
+- A.1/A.2/A.3 son tablas del anexo A. No deben confundirse con los anexos B y C.
 
-## Funciones
-- Anexos A, B y C; contexto de D, E y F.
-- Acceso directo a las tablas A.1, A.2 y A.3 desde la portada.
-- Buscador en todo el desarrollo; filtros de tabla, dominio y progreso.
-- Ficha completa o enfoque de implementador, auditor y rúbrica; impresión de la ficha completa.
-- Evaluación y progreso en localStorage.
-- Matriz CSV con las 78 fichas, los dos roles, los 390 criterios y las evaluaciones; respaldo/restauración JSON compatible con registros anteriores (valores internos 0–4).
-- Calculadora didáctica de riesgo y cuestionario de 12 preguntas con explicación.
-- Diseño adaptable y navegación mediante teclado.
+## Interacción
+
+- Acceso directo a las tres tablas y resumen comparativo con acceso a las fichas completas.
+- Búsqueda global instantánea por código, sistema, palabra, roles y texto original; filtro por dominio.
+- Selector global: modo dual con columnas paralelas, solo implementador y solo auditor. En pantallas pequeñas las columnas se apilan.
+- Rúbricas desplegables: rojo crítico, naranja bajo, ámbar medio, azul alto y esmeralda muy alto; cada insignia incluye su etiqueta textual.
+- Simulación oral con pregunta, control aleatorio entre los resultados y guía de respuesta que se revela manualmente. No evalúa automáticamente el discurso.
+- Modo oscuro persistente, impresión y copia de argumentos/SQL. Si el navegador impide copiar, permite seleccionar el texto manualmente.
+- Evaluación y progreso locales, exportación CSV completa y respaldo/restauración JSON compatibles con los registros anteriores. Los borradores sobreviven a cambios de vista durante la sesión; se guardan al pulsar Guardar evaluación.
 
 ## Alcance
-Material independiente, no oficial de ISO ni de la UNSA. Las prácticas institucionales no han sido verificadas. Los ejemplos, criterios de prueba, plazos de proyecto y escalas son propuestas educativas. No son reglas de certificación.
-El OCR fuente contiene errores; cotejar referencias con una copia autorizada antes de una auditoría formal. Las fuentes oficiales y limitaciones están en la sección Fuentes.
-No se distribuye el documento ISO completo. Las notas se guardan localmente; no ingresar datos personales reales. La tipografía carga opcionalmente desde Google Fonts; hay alternativas locales.
 
-## Criterio editorial
-Se conserva el desarrollo de la conversación aportada, con correcciones sobre bases legales, conservación, borrado, anonimización, criptografía, independencia de auditoría y clasificación de hallazgos. Los objetivos se presentan como paráfrasis, no como citas oficiales. Cada ficha identifica la línea de referencia de `contenido.txt`, que permanece como fuente de trabajo local.
+Material académico independiente, no oficial de ISO ni diagnóstico de la UNSA. `contenido.txt` contiene una conversación de IA: sus afirmaciones se conservan como fuente, diferenciadas de la versión revisada. Las asignaciones de cargos, convenios, tecnologías y plazos son propuestas que deben validarse.
 
-OTI se denomina conforme al [sitio institucional](https://oti.unsa.edu.pe/equipo-de-trabajo/). El [DS 016-2024-JUS](https://www.gob.pe/institucion/anpd/normas-legales/6554453-16-2024-jus) es una referencia para validar condiciones peruanas; los ejemplos no sustituyen la evaluación jurídica de cada tratamiento.
+Los ejemplos no autorizan pruebas en producción. Usar datos ficticios o evidencia minimizada y un alcance de auditoría autorizado. Muy bajo no determina automáticamente una no conformidad mayor; Muy alto necesita evidencia de eficacia y mejora sostenidas. No introducir datos personales reales en las notas.
 
-Los roles de privacidad, convenios y tecnologías son escenarios propuestos. Los plazos, herramientas y tamaños de muestra no son requisitos ISO universales. Muy alto exige evidencia sostenida de eficacia y mejora; muy bajo no determina automáticamente un hallazgo mayor. Sin evidencia suficiente, dejar la madurez sin valorar.
+Referencias: [ISO/IEC 27701](https://www.iso.org/standard/27701), [OTI UNSA](https://oti.unsa.edu.pe/equipo-de-trabajo/) y [DS 016-2024-JUS · ANPD](https://www.gob.pe/institucion/anpd/normas-legales/6554453-16-2024-jus).
 
-## Verificación
-Ejecutar `node --check app.js`, `node --check data.js` y `node tests/check.cjs`. La prueba revisa cobertura 31/18/29, integridad de campos y rúbricas, renderizado de fichas y secciones, filtros, persistencia, exportación CSV y restauración JSON mediante un DOM simulado. No sustituye una comprobación visual en navegador.
+## GitHub Pages
+
+Publicar desde `main`, carpeta raíz. `index.html` es el único archivo necesario para ejecutar la guía.
+
+## Verificación de desarrollo
+
+`node tests/check.cjs` verifica el archivo HTML directamente: cobertura, integridad del texto original cuando está disponible en el entorno local, vistas, búsqueda, filtros, roles, simulación, persistencia, borradores, exportación, copia alternativa e importación de respaldos anteriores. El DOM simulado permite verificar lógica sin dependencias externas; no sustituye una revisión visual en navegador. Node.js solo se usa para estas pruebas, nunca para abrir la aplicación.
